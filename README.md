@@ -1,6 +1,6 @@
 # GoTALK
 ## A CLI P2P chat application in go which supports 7(configurable) clients at a time
-
+[GIF](./record.gif)
 ### Design
     There are 2 main parts to the application
     - Client: The process on which the user can see other active users and send messages to send by prepending the message with the username/. For example
