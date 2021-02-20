@@ -12,8 +12,9 @@ import (
 // Stores the number of active connections
 var state []connection.ServerConn
 
-// List of ports which can be provided to the client chatting applications 
-var portList = []string{ ":9000", ":9001", ":9002", ":9003", ":9004", ":9005", ":9006", ":9007"}
+// List of ports which can be provided to the client chatting applications
+var portList = []string{":9000", ":9001", ":9002", ":9003", ":9004", ":9005", ":9006", ":9007"}
+
 func main() {
 	// For connecting to the port the helper server is located on
 	port := ":8000"
@@ -33,12 +34,13 @@ func main() {
 }
 
 func handleConnection(conn net.Conn) {
-		err := demultiplexConn(conn)
-		if err != nil {
-			fmt.Println(err.Error())
-			conn.Close()
-		}
+	err := demultiplexConn(conn)
+	if err != nil {
+		fmt.Println(err.Error())
+		conn.Close()
+	}
 }
+
 /*
 This function figures what kind of request it is
 There are 3 kinds of request
@@ -79,8 +81,8 @@ Function which removes the client from the user list by name
 */
 func removeClientByName(name string) {
 	index := indexOf(connection.ServerConn{Name: name, AddressString: ""})
-	portList = append(portList, state[index].AddressString)
 	if index != -1 {
+		portList = append(portList, state[index].AddressString)
 		state = append(state[0:index], state[index+1:]...)
 	}
 }
